@@ -1,7 +1,6 @@
 OpenGL 3D Renderer
 
-A modern 3D graphics rendering engine built in C++ using OpenGL, GLAD, and GLFW, developed while following Victor Gordan’s “OpenGL Tutorial for Beginners” series. (https://www.youtube.com/playlist?list=PLPaoO-vpZnumdcb4tZc4x5Q-v7CkrQ6M-
-) The goal of this project was to gain a deep understanding of real-time rendering pipelines, shader programming, and GPU resource management through the implementation of lighting, texturing, and model loading systems.
+A modern 3D graphics rendering engine built in C++ using OpenGL, GLAD, and GLFW, developed while following Victor Gordan’s “OpenGL Tutorial for Beginners” series. (https://www.youtube.com/playlist?list=PLPaoO-vpZnumdcb4tZc4x5Q-v7CkrQ6M-) The goal of this project was to gain a deep understanding of real-time rendering pipelines, shader programming, and GPU resource management through the implementation of lighting, texturing, and model loading systems.
 
 Some miscellaneous notes:
 
