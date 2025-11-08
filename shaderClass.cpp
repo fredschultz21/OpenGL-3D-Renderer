@@ -45,7 +45,8 @@ std::string get_file_contents(const char* filename)
 }
 
 
-// Constructor that creates a Shader Program from a vertex and fragment shader file.
+// Shader constructor for Shader class. Takes 2 strings, the vertex shader file and
+// the fragment shader file.
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
 	// Read the vertex and fragment shader source files into strings.
