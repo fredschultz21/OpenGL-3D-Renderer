@@ -10,20 +10,33 @@
 // from a vertex or fragment shader file into memory.
 std::string get_file_contents(const char* filename)
 {
-	// Create an input file stream in binary mode.
+	// Calls a constructor of class std::ifstream to create a variable
+	// named in, and feed the constructor params filename and std::ios::binary.
+	// std::ifstream is a built-in class of the standard C++ library, 
+	// with a constructor we call here.
+	// std::ios::binary changes the way the file is read.
+	// Below here, we look at our file's filename and open our variable in.
+	// in is a tool to read our file into contents. We need in in order to access the file.
 	std::ifstream in(filename, std::ios::binary);
-	// If the file opens successfully:
+	// If the file opens successfully after being written:
 	if (in)
 	{
 		std::string contents;
 		// Move the file pointer to the end to find its total size.
+		// First spot is offset, we just set that to 0, then the next spot is
+		// direction. seek g means seek get. This moves the read pointer
+		// to the very end of the file with 0 offset. 
 		in.seekg(0, std::ios::end);
-		// Resize the string to hold all file data.
+		// in.tellg() tells use the distance we are from the start of the file.
+		// Since we moved to the end, that is equal to the file size. 
+		// We resize our string contents to fit the size of our in file.
 		contents.resize(in.tellg());
 		// Move the file pointer back to the start.
 		in.seekg(0, std::ios::beg);
-		// Read all of the file contents into the string.
+		// Point to contents at position 0, then read the length
+		// of the size of contents onto contents from in. 
 		in.read(&contents[0], contents.size());
+		// The file is closed.
 		in.close();
 		return(contents);
 	}
