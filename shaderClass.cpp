@@ -50,16 +50,25 @@ std::string get_file_contents(const char* filename)
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
 	// Read the vertex and fragment shader source files into strings.
+	// We conveniently use get_file_contents from above.
 	std::string vertexCode = get_file_contents(vertexFile);
 	std::string fragmentCode = get_file_contents(fragmentFile);
 
-	// Convert the std::string shader source code into C-style strings.
+	// Convert the std::string shader source code into C-style strings (char*).
+	// std::string is higher level than char*.
+	// It's safer to read stuff in as std::strings because it automatically
+	// finds a spot in memory for us. 
+	// We need char* for OpenGl, and we don't actually create a new string here,
+	// we just create a char* pointer to our std::string.
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
 
-	// Create a new Vertex Shader object and store its ID.
+	// Create a new Vertex Shader object and store its ID as vertexShader.
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	// Attach the vertex shader source code to the shader object.
+	// Params are - which shader are we passing in, how many strings are we
+	// passing in, a pointer to the shader source code (our char*), and an optional array
+	// of the string lengths (not needed).
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	// Compile the vertex shader into machine code.
 	glCompileShader(vertexShader);
