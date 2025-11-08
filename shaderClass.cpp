@@ -77,6 +77,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 
 
 	// Create a new Fragment Shader object and store its ID.
+	// Same process as for the vertex shader.
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	// Attach the fragment shader source code to the shader object.
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
@@ -87,6 +88,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 
 
 	// Create a Shader Program and store its ID.
+	// The shader program links the shaders we have together (the fragment and vertex).
 	ID = glCreateProgram();
 	// Attach both compiled shaders (vertex and fragment) to the program.
 	glAttachShader(ID, vertexShader);
@@ -103,7 +105,8 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 }
 
 
-// Activates this shader program for use in rendering.
+// Declaration of function Activate, part of the shader class,
+// activates this shader program for use in rendering.
 // After calling this, all draw calls will use this shader until another is activated.
 void Shader::Activate()
 {
